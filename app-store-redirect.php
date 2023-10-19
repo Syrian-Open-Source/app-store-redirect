@@ -9,7 +9,6 @@
  * Text Domain: app-store-redirect
  */
 
-
 define('ANDROID_APP_URL_OPTION', 'android_app_url');
 define('IOS_APP_URL_OPTION', 'ios_app_url');
 define('CUSTOM_ROUTE_OPTION', 'custom_route');
@@ -55,7 +54,7 @@ function app_store_redirect_settings_page()
         update_option(IOS_APP_URL_OPTION, esc_url($_POST['ios_app_url']));
         update_option(CUSTOM_ROUTE_OPTION, esc_html($_POST['custom_route']));
 
-        // Flush old Cached rewrite rules without visiting Settings->Permalinks (effective on next website load)
+        // Flush old Cached rewrite rules without visiting Settings->Permalinks (effective on the next website load)
         flush_rewrite_rules();
 
         echo '<div class="updated"><p>' . __('Settings saved', 'app-store-redirect') . '.</p></div>';
@@ -92,6 +91,14 @@ function app_store_redirect_init()
     $custom_route = get_option(CUSTOM_ROUTE_OPTION);
 
     if (!empty($custom_route)) {
+        // Check if the custom route is already in use
+        $existing_pages = get_pages(array('meta_key' => '_wp_page_template', 'meta_value' => 'page-templates/template-custom.php'));
+
+        if (!empty($existing_pages)) {
+            echo '<div class="error"><p>' . __('Custom route is already in use. Please choose a different route.', 'app-store-redirect') . '</p></div>';
+            return;
+        }
+
         add_rewrite_rule('^' . $custom_route . '/?$', 'index.php?app_store_redirect=true', 'top');
     }
 }
