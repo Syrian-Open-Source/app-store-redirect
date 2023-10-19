@@ -3,14 +3,15 @@
 /**
  * Plugin Name: App Store Redirect
  * Description: Redirects users to the appropriate app store based on their operating system.
- * Version: 1.0
+ * Version: 1.1
  * Author: Somar Kesen
+ * Author URI: https://github.com/somarkn99
  */
 
 // Add plugin settings in the admin dashboard
 function app_store_redirect_admin_menu()
 {
-    add_menu_page('App Store Redirect Settings', 'App Store Redirect', 'manage_options', 'app-store-redirect-settings', 'app_store_redirect_settings_page');
+    add_menu_page('App Store Redirect Settings', 'App Store Redirect', 'manage_options', 'app-store-redirect-settings', 'app_store_redirect_settings_page', 'dashicons-smartphone');
 }
 add_action('admin_menu', 'app_store_redirect_admin_menu');
 
