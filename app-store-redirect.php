@@ -23,6 +23,10 @@ function app_store_redirect_settings_page()
         update_option('android_app_url', sanitize_text_field($_POST['android_app_url']));
         update_option('ios_app_url', sanitize_text_field($_POST['ios_app_url']));
         update_option('custom_route', sanitize_text_field($_POST['custom_route'])); // Added custom route setting
+
+        // Flush old Cached rewrite rules without visiting Settings->Permalinks. (Affictive on next website load)
+        flush_rewrite_rules();
+
         echo '<div class="updated"><p>Settings saved.</p></div>';
     }
     $android_app_url = get_option('android_app_url', '');
