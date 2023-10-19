@@ -1,6 +1,6 @@
-# Plugin Name
+# App Store Redirect
 
-**Contributors:** Somar Kesen  
+**Contributors:** Somar Kesen,Abdo Mayhob
 **Tags:** app, store, redirect  
 **Requires at least:** 5.0  
 **Tested up to:** 5.8  
@@ -41,6 +41,7 @@ App Store Redirect is a WordPress plugin that redirects users to the appropriate
 # Credit
 
 - [Somar Kesen](https://github.com/somarkn99)
+- [Abdo Mayhob](https://github.com/Abdoo-mayhob)
 
 # About Syrian Open Source
 
