@@ -1,0 +1,79 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: App Store Redirect\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-19 16:51+0000\n"
+"PO-Revision-Date: 2023-10-19 17:15+0000\n"
+"Last-Translator: Abdoo\n"
+"Language-Team: العربية\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100 >= 3 "
+"&& n%100<=10 ? 3 : n%100 >= 11 && n%100<=99 ? 4 : 5;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.4; wp-6.3.2\n"
+"X-Domain: app-store-redirect"
+
+#. Name of the plugin
+#: app-store-redirect.php:26
+msgid "App Store Redirect"
+msgstr "إعادة التوجيه إلى متجر التطبيقات"
+
+#: app-store-redirect.php:25
+msgid "App Store Redirect Settings"
+msgstr "إعدادات إعادة التوجيه إلى متجر التطبيقات"
+
+#: app-store-redirect.php:73
+msgid "Apple Store URL:"
+msgstr "رابط التطبيق على آب ستور:"
+
+#: app-store-redirect.php:78
+msgid "Custom link that will redirect the user, for example: appStores"
+msgstr "ضع هنا الرابط المخصص الذي سيوجه الزائر عند زيارته إلى متجر التطبيقات"
+
+#: app-store-redirect.php:77
+msgid "Custom Route:"
+msgstr "رابط توجيه خاص:"
+
+#: app-store-redirect.php:45
+msgid "Error"
+msgstr "حدث خطأ ما"
+
+#: app-store-redirect.php:69
+msgid "Google Play URL:"
+msgstr "رابط التطبيق على غوغل بلاي:"
+
+#. Author URI of the plugin
+msgid "https://github.com/somarkn99"
+msgstr ""
+
+#: app-store-redirect.php:45
+msgid "Invalid nonce specified"
+msgstr "عذراً, لا تمتلك صلاحية التعديل"
+
+#. Description of the plugin
+msgid ""
+"Redirects users to the appropriate app store based on their operating system."
+msgstr "أعادة توجيه الزوار إلى متجر التطبيقات المناسب لنظام تشغيل جهاز الزائر."
+
+#: app-store-redirect.php:59
+msgid "Settings saved"
+msgstr "تم حفظ الإعدادات بنجاح"
+
+#. Author of the plugin
+msgid "Somar Kesen"
+msgstr ""
+
+#: app-store-redirect.php:74
+msgid "You App link on Apple Store"
+msgstr "ضع رابط التطبيق على آب ستور هنا"
+
+#: app-store-redirect.php:70
+msgid "You App link on Google Play"
+msgstr "ضع رابط التطبيق على غوغل بلاي هنا"
+
+#: app-store-redirect.php:42
+msgid "You do not have sufficient permissions to access this page."
+msgstr "عذراً, لا تمتلك صلاحية التعديل"
