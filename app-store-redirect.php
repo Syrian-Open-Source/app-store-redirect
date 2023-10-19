@@ -3,14 +3,32 @@
 /**
  * Plugin Name: App Store Redirect
  * Description: Redirects users to the appropriate app store based on their operating system.
- * Version: 1.0
+ * Version: 1.1
  * Author: Somar Kesen
+ * Author URI: https://github.com/somarkn99
+ * Text Domain: app-store-redirect
  */
+
+
+
+// Load Translation Files
+function app_store_redirect_load_textdomain() {
+    load_plugin_textdomain( 'app-store-redirect', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+}
+add_action( 'init', 'app_store_redirect_load_textdomain' );
+
 
 // Add plugin settings in the admin dashboard
 function app_store_redirect_admin_menu()
 {
-    add_menu_page('App Store Redirect Settings', 'App Store Redirect', 'manage_options', 'app-store-redirect-settings', 'app_store_redirect_settings_page');
+    add_menu_page(
+        __('App Store Redirect Settings', 'app-store-redirect'),
+        __('App Store Redirect', 'app-store-redirect'),
+        'manage_options',
+        'app-store-redirect-settings',
+        'app_store_redirect_settings_page',
+        'dashicons-smartphone'
+    );
 }
 add_action('admin_menu', 'app_store_redirect_admin_menu');
 
@@ -18,32 +36,49 @@ add_action('admin_menu', 'app_store_redirect_admin_menu');
 function app_store_redirect_settings_page()
 {
     if (isset($_POST['app_store_redirect_submit'])) {
+
+        // Security
+        if (!current_user_can('manage_options')) {
+            wp_die(__('You do not have sufficient permissions to access this page.', 'app-store-redirect'));
+        }
+        if (!isset($_POST['app_store_redirect_nonce']) || !wp_verify_nonce($_POST['app_store_redirect_nonce'], 'app_store_redirect_update')) {
+            wp_die(__('Invalid nonce specified', 'app-store-redirect'), __('Error', 'app-store-redirect'), [
+                'response'  => 403,
+                'back_link' => 'admin.php?page=' . $_GET['page'],
+            ]);
+        }
+
         // Save the Android and iOS app URLs and the custom route
         update_option('android_app_url', sanitize_text_field($_POST['android_app_url']));
         update_option('ios_app_url', sanitize_text_field($_POST['ios_app_url']));
         update_option('custom_route', sanitize_text_field($_POST['custom_route'])); // Added custom route setting
-        echo '<div class="updated"><p>Settings saved.</p></div>';
+
+        // Flush old Cached rewrite rules without visiting Settings->Permalinks. (Affictive on next website load)
+        flush_rewrite_rules();
+
+        echo '<div class="updated"><p>' . __('Settings saved' , 'app-store-redirect') . '.</p></div>';
     }
     $android_app_url = get_option('android_app_url', '');
     $ios_app_url = get_option('ios_app_url', '');
     $custom_route = get_option('custom_route', ''); // Get the custom route setting
 ?>
     <div class="wrap">
-        <h2>App Store Redirect Settings</h2>
+        <h2><?= __('App Store Redirect Settings', 'app-store-redirect')?></h2>
         <form method="post" action="">
-            <label for="android_app_url">Google Play URL:</label>
-            <input type="text" name="android_app_url" placeholder="You App link on Google Play" id="android_app_url" value="<?php echo esc_attr($android_app_url); ?>" size="60">
+            <?php wp_nonce_field('app_store_redirect_update', 'app_store_redirect_nonce'); ?>
+            <label for="android_app_url"><?= __('Google Play URL:', 'app-store-redirect') ?></label>
+            <input type="text" name="android_app_url" placeholder="<?=__('You App link on Google Play', 'app-store-redirect')?>" id="android_app_url" value="<?php echo esc_attr($android_app_url); ?>" size="60">
             <br>
             <br>
-            <label for="ios_app_url">Apple Store URL:</label>
-            <input type="text" name="ios_app_url" placeholder="You App link on Apple Store" id="ios_app_url" value="<?php echo esc_attr($ios_app_url); ?>" size="60">
+            <label for="ios_app_url"><?=__('Apple Store URL:', 'app-store-redirect')?></label>
+            <input type="text" name="ios_app_url" placeholder="<?=__('You App link on Apple Store', 'app-store-redirect')?>" id="ios_app_url" value="<?php echo esc_attr($ios_app_url); ?>" size="60">
             <br>
             <br>
-            <label for="custom_route">Custom Route:</label> <!-- Add input field for custom route -->
-            <input type="text" name="custom_route" placeholder="the link that well send to user, for example: appStores" id="custom_route" value="<?php echo esc_attr($custom_route); ?>" size="60">
+            <label for="custom_route"><?=__('Custom Route:', 'app-store-redirect')?></label>
+            <input type="text" name="custom_route" placeholder="<?=__('Custom link that will redirect the user, for example: appStores', 'app-store-redirect')?>" id="custom_route" value="<?php echo esc_attr($custom_route); ?>" size="60">
             <br>
             <br>
-            <input type="submit" name="app_store_redirect_submit" class="button button-primary" value="Save Settings">
+            <input type="submit" name="app_store_redirect_submit" class="button button-primary" value="<?=__('Save')?>">
         </form>
     </div>
 <?php
