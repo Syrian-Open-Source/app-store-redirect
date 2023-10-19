@@ -19,6 +19,18 @@ add_action('admin_menu', 'app_store_redirect_admin_menu');
 function app_store_redirect_settings_page()
 {
     if (isset($_POST['app_store_redirect_submit'])) {
+
+        // Security
+        if (!current_user_can('manage_options')) {
+            wp_die(__('You do not have sufficient permissions to access this page.', 'app-store-redirect'));
+        }
+        if (!isset($_POST['app_store_redirect_nonce']) || !wp_verify_nonce($_POST['app_store_redirect_nonce'], 'app_store_redirect_update')) {
+            wp_die(__('Invalid nonce specified', 'app-store-redirect'), __('Error', 'app-store-redirect'), [
+                'response'  => 403,
+                'back_link' => 'admin.php?page=' . $_GET['page'],
+            ]);
+        }
+
         // Save the Android and iOS app URLs and the custom route
         update_option('android_app_url', sanitize_text_field($_POST['android_app_url']));
         update_option('ios_app_url', sanitize_text_field($_POST['ios_app_url']));
@@ -36,6 +48,7 @@ function app_store_redirect_settings_page()
     <div class="wrap">
         <h2>App Store Redirect Settings</h2>
         <form method="post" action="">
+            <?php wp_nonce_field('app_store_redirect_update', 'app_store_redirect_nonce'); ?>
             <label for="android_app_url">Google Play URL:</label>
             <input type="text" name="android_app_url" placeholder="You App link on Google Play" id="android_app_url" value="<?php echo esc_attr($android_app_url); ?>" size="60">
             <br>
