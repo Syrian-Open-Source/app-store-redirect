@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: App Store Redirect\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-19 16:51+0000\n"
-"PO-Revision-Date: 2023-10-19 17:15+0000\n"
+"PO-Revision-Date: 2023-10-21 11:37+0000\n"
 "Last-Translator: Abdoo\n"
 "Language-Team: العربية\n"
 "Language: ar\n"
@@ -16,32 +16,64 @@ msgstr ""
 "X-Loco-Version: 2.6.4; wp-6.3.2\n"
 "X-Domain: app-store-redirect"
 
+#: app-store-redirect.php:97
+msgid "(click to copy)"
+msgstr "اضغط على الشورت كود لنسخه"
+
+#: app-store-redirect.php:112
+msgid "According to the user operating system"
+msgstr "حسب نظام تشغيل جهاز المستخدم"
+
+#: app-store-redirect.php:169
+msgid "App Store"
+msgstr "الآب ستور"
+
 #. Name of the plugin
-#: app-store-redirect.php:26
+#: app-store-redirect.php:31
 msgid "App Store Redirect"
 msgstr "إعادة التوجيه إلى متجر التطبيقات"
 
-#: app-store-redirect.php:25
+#: app-store-redirect.php:30 app-store-redirect.php:77
 msgid "App Store Redirect Settings"
 msgstr "إعدادات إعادة التوجيه إلى متجر التطبيقات"
 
-#: app-store-redirect.php:73
+#: app-store-redirect.php:84
 msgid "Apple Store URL:"
 msgstr "رابط التطبيق على آب ستور:"
 
-#: app-store-redirect.php:78
+#: app-store-redirect.php:96
+msgid "Available Shortcodes"
+msgstr "الشورت كودز المتوفرة"
+
+#: app-store-redirect.php:89
 msgid "Custom link that will redirect the user, for example: appStores"
 msgstr "ضع هنا الرابط المخصص الذي سيوجه الزائر عند زيارته إلى متجر التطبيقات"
 
-#: app-store-redirect.php:77
+#: app-store-redirect.php:62
+msgid "Custom route is already in use. Please choose a different route."
+msgstr "الرابط المخصص هذا مستخدم مسبقاً لأغراض اخرى, استخدم غيره."
+
+#: app-store-redirect.php:88
 msgid "Custom Route:"
 msgstr "رابط توجيه خاص:"
 
-#: app-store-redirect.php:45
+#: app-store-redirect.php:170
+msgid "Download on the"
+msgstr "حمّل التطبيق من"
+
+#: app-store-redirect.php:49
 msgid "Error"
 msgstr "حدث خطأ ما"
 
-#: app-store-redirect.php:69
+#: app-store-redirect.php:176
+msgid "Get it on"
+msgstr "حمّل التطبيق من"
+
+#: app-store-redirect.php:175
+msgid "Google Play"
+msgstr "غوغل بلاي"
+
+#: app-store-redirect.php:80
 msgid "Google Play URL:"
 msgstr "رابط التطبيق على غوغل بلاي:"
 
@@ -49,31 +81,41 @@ msgstr "رابط التطبيق على غوغل بلاي:"
 msgid "https://github.com/somarkn99"
 msgstr ""
 
-#: app-store-redirect.php:45
+#: app-store-redirect.php:49
 msgid "Invalid nonce specified"
 msgstr "عذراً, لا تمتلك صلاحية التعديل"
+
+#: app-store-redirect.php:110
+msgid "or"
+msgstr "أو"
 
 #. Description of the plugin
 msgid ""
 "Redirects users to the appropriate app store based on their operating system."
 msgstr "أعادة توجيه الزوار إلى متجر التطبيقات المناسب لنظام تشغيل جهاز الزائر."
 
-#: app-store-redirect.php:59
+#: app-store-redirect.php:70
 msgid "Settings saved"
 msgstr "تم حفظ الإعدادات بنجاح"
+
+#: app-store-redirect.php:131
+msgid "Shortcode Copied !"
+msgstr "تم نسخ الشورت كود إلى الحافظة !"
 
 #. Author of the plugin
 msgid "Somar Kesen"
 msgstr ""
 
-#: app-store-redirect.php:74
-msgid "You App link on Apple Store"
-msgstr "ضع رابط التطبيق على آب ستور هنا"
-
-#: app-store-redirect.php:70
-msgid "You App link on Google Play"
-msgstr "ضع رابط التطبيق على غوغل بلاي هنا"
-
-#: app-store-redirect.php:42
+#: app-store-redirect.php:46
 msgid "You do not have sufficient permissions to access this page."
 msgstr "عذراً, لا تمتلك صلاحية التعديل"
+
+#: app-store-redirect.php:85
+#| msgid "You App link on Apple Store"
+msgid "Your App link on Apple Store"
+msgstr "ضع رابط التطبيق على آب ستور هنا"
+
+#: app-store-redirect.php:81
+#| msgid "You App link on Google Play"
+msgid "Your App link on Google Play"
+msgstr "ضع رابط التطبيق على غوغل بلاي هنا"
