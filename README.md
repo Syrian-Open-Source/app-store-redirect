@@ -21,7 +21,7 @@ App Store Redirect is a WordPress plugin that redirects users to the appropriate
 
 ## Changelog
 
-### 1.1
+### 1.2
 
 - Shortcode for app store button
 
