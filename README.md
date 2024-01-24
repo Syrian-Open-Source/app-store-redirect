@@ -1,4 +1,4 @@
-# App Store Redirect
+# App Redirect
 
 **Contributors:** Somar Kesen, Abdoo Mayhob
 **Tags:** app, store, redirect  
@@ -11,13 +11,13 @@
 
 ## Description
 
-App Store Redirect is a WordPress plugin that redirects users to the appropriate app store based on their operating system. It's useful for promoting your mobile apps to users visiting your website.
+App Redirect is a WordPress plugin that redirects users to the appropriate app store based on their operating system. It's useful for promoting your mobile apps to users visiting your website.
 
 ## Installation
 
 1. Upload the `app-store-redirect` folder to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
-3. Configure the plugin by navigating to 'App Store Redirect' in the WordPress dashboard and setting the Android and iOS app URLs.
+3. Configure the plugin by navigating to 'App Redirect' in the WordPress dashboard and setting the Android and iOS app URLs.
 
 ## Changelog
 
@@ -37,7 +37,7 @@ App Store Redirect is a WordPress plugin that redirects users to the appropriate
 
 1. **How do I configure this plugin?**
 
-   - Navigate to 'App Store Redirect' in the WordPress dashboard and set the Android and iOS app URLs.
+   - Navigate to 'App Redirect' in the WordPress dashboard and set the Android and iOS app URLs.
 
 2. **Why am I getting a 404 error when using this plugin?**
    - Ensure that your permalink settings are configured correctly. Also, check that the custom route matches your URL structure.
