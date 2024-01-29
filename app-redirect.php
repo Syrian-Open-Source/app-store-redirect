@@ -46,33 +46,27 @@ function app_store_redirect_settings_page()
         if (!current_user_can('manage_options')) {
             wp_die(esc_html__('You do not have sufficient permissions to access this page.', 'app-redirect'));
         }
-        if (!isset($_POST['app_store_redirect_nonce']) || !wp_verify_nonce($_POST['app_store_redirect_nonce'], 'app_store_redirect_update')) {
+        if (!isset($_POST['app_store_redirect_nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['app_store_redirect_nonce'])), 'app_store_redirect_update')) {
             wp_die(esc_html__('Invalid nonce specified', 'app-redirect'), esc_html__('Error', 'app-redirect'), [
                 'response' => 403,
-                'back_link' => 'admin.php?page=' . $_GET['page'],
+                'back_link' => 'admin.php?page=' . sanitize_text_field($_GET['page']),
             ]);
         }
 
         // Save the Android and iOS app URLs and the custom route
-        update_option(ANDROID_APP_URL_OPTION, esc_url($_POST['android_app_url']));
-        update_option(IOS_APP_URL_OPTION, esc_url($_POST['ios_app_url']));
-
-        // Check if the custom route is already in use
-        $existing_pages = get_pages(['meta_key' => '_wp_page_template', 'meta_value' => 'page-templates/template-custom.php']);
-        if (!empty($existing_pages)) {
-            echo '<div class="error"><p>' . esc_html__('Custom route is already in use. Please choose a different route.', 'app-redirect') . '</p></div>';
-            return;
-        }
-        update_option(CUSTOM_ROUTE_OPTION, esc_html($_POST['custom_route']));
+        update_option(ANDROID_APP_URL_OPTION, esc_url_raw(sanitize_text_field($_POST['android_app_url'])));
+        update_option(IOS_APP_URL_OPTION, esc_url_raw(sanitize_text_field($_POST['ios_app_url'])));
+        update_option(CUSTOM_ROUTE_OPTION, sanitize_text_field($_POST['custom_route']));
 
         // Flush old Cached rewrite rules without visiting Settings->Permalinks (effective on the next website load)
         flush_rewrite_rules();
 
         echo '<div class="updated"><p>' . esc_html__('Settings saved', 'app-redirect') . '.</p></div>';
     }
-    $android_app_url = get_option(ANDROID_APP_URL_OPTION, '');
-    $ios_app_url = get_option(IOS_APP_URL_OPTION, '');
-    $custom_route = get_option(CUSTOM_ROUTE_OPTION, '');
+
+    $android_app_url = esc_url(get_option(ANDROID_APP_URL_OPTION, ''));
+    $ios_app_url = esc_url(get_option(IOS_APP_URL_OPTION, ''));
+    $custom_route = esc_attr(get_option(CUSTOM_ROUTE_OPTION, ''));
 ?>
     <div class="wrap">
         <h2><?php esc_html_e('App Redirect Settings', 'app-redirect'); ?></h2>
@@ -244,7 +238,7 @@ add_action('template_redirect', 'app_store_redirect_template_redirect');
 
 function app_store_redirect_get_user_os()
 {
-    $user_agent = $_SERVER['HTTP_USER_AGENT'];
+    $user_agent = sanitize_text_field($_SERVER['HTTP_USER_AGENT']);
     if (strpos($user_agent, 'Android') !== false) {
         return 'android';
     } elseif ((strpos($user_agent, 'iPhone') !== false || strpos($user_agent, 'iPad') !== false)) {
