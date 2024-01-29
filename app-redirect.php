@@ -51,7 +51,7 @@ function app_store_redirect_settings_page()
         if (!isset($_POST['app_store_redirect_nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['app_store_redirect_nonce'])), 'app_store_redirect_update')) {
             wp_die(esc_html__('Invalid nonce specified', 'app-redirect'), esc_html__('Error', 'app-redirect'), [
                 'response' => 403,
-                'back_link' => 'admin.php?page=' . sanitize_text_field($_GET['page']),
+                'back_link' => 'admin.php?page=' . sanitize_text_field($_GET['page'])
             ]);
         }
 
@@ -63,7 +63,7 @@ function app_store_redirect_settings_page()
         // Flush old Cached rewrite rules without visiting Settings->Permalinks (effective on the next website load)
         flush_rewrite_rules();
 
-        echo '<div class="updated"><p>' . esc_html__('Settings saved', 'app-redirect') . '.</p></div>';
+        echo '<div class = "updated"><p>' . esc_html__('Settings saved', 'app-redirect') . '.</p></div>';
     }
 
     $android_app_url = esc_url(get_option(ANDROID_APP_URL_OPTION, ''));
@@ -90,19 +90,19 @@ function app_store_redirect_settings_page()
         <h3><?php esc_html_e('Available Shortcodes', 'app-redirect'); ?></h3>
         <span><?php esc_html_e('(click to copy)', 'app-redirect'); ?></span>
 
-        <h4>[app-store-button buttons="ios"]</h4>
-        <?php echo do_shortcode('[app-store-button buttons="ios"]'); ?>
+        <h4>[app-store-button buttons = "ios"]</h4>
+        <?php echo do_shortcode('[app-store-button buttons = "ios"]'); ?>
 
-        <h4>[app-store-button buttons="android"]</h4>
-        <?php echo do_shortcode('[app-store-button buttons="android"]'); ?>
+        <h4>[app-store-button buttons = "android"]</h4>
+        <?php echo do_shortcode('[app-store-button buttons = "android"]'); ?>
 
-        <h4>[app-store-button buttons="all"]</h4>
-        <?php echo do_shortcode('[app-store-button buttons="all"]'); ?>
+        <h4>[app-store-button buttons = "all"]</h4>
+        <?php echo do_shortcode('[app-store-button buttons = "all"]'); ?>
 
-        <h4>[app-store-button buttons="auto"]</h4>
-        <?php echo do_shortcode('[app-store-button buttons="ios"]'); ?>
+        <h4>[app-store-button buttons = "auto"]</h4>
+        <?php echo do_shortcode('[app-store-button buttons = "ios"]'); ?>
         <span style="display: inline;"><?php esc_html_e('or', 'app-redirect'); ?></span>
-        <?php echo do_shortcode('[app-store-button buttons="android"]'); ?>
+        <?php echo do_shortcode('[app-store-button buttons = "android"]'); ?>
         <span style="display: inline;"><?php esc_html_e('According to the user operating system', 'app-redirect'); ?></span>
     </div>
 
@@ -135,7 +135,7 @@ function app_store_redirect_settings_page()
 
 /*
  * Shortcode: app-store-button 
- * Usability: [app-store-button buttons="auto"]
+ * Usability: [app-store-button buttons = "auto"]
  * 
  * Attribuites:
  * buttons
@@ -161,15 +161,15 @@ function app_store_redirect_button_shortcode($atts)
     // All available buttons
     $ARGS = [
         'ios' => [
-            'button_title'     => __('App Store', 'app-redirect'),
-            'button_sub_title' => __('Download on the', 'app-redirect'),
-            'button_class'     => 'apple-btn',
+            'button_title' => esc_html__('App Store', 'app-redirect'),
+            'button_sub_title' => esc_html__('Download on the', 'app-redirect'),
+            'button_class' => 'apple-btn',
             'app_link_setting' => IOS_APP_URL_OPTION
         ],
         'android' => [
-            'button_title'     => __('Google Play', 'app-redirect'),
-            'button_sub_title' => __('Get it on', 'app-redirect'),
-            'button_class'     => 'google-btn',
+            'button_title' => esc_html__('Google Play', 'app-redirect'),
+            'button_sub_title' => esc_html__('Get it on', 'app-redirect'),
+            'button_class' => 'google-btn',
             'app_link_setting' => ANDROID_APP_URL_OPTION
         ]
     ];
@@ -203,7 +203,7 @@ function app_store_redirect_init()
     $custom_route = get_option(CUSTOM_ROUTE_OPTION);
 
     if (!empty($custom_route)) {
-        add_rewrite_rule('^' . $custom_route . '/?$', 'index.php?app_store_redirect=true', 'top');
+        add_rewrite_rule('^' . $custom_route . '/?$', 'index.php?app_store_redirect = true', 'top');
     }
 }
 add_action('init', 'app_store_redirect_init');
