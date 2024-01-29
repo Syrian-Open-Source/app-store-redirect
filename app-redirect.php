@@ -8,6 +8,7 @@
  * Author URI: https://github.com/somarkn99
  * Text Domain: app-redirect
  */
+if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
 define('ANDROID_APP_URL_OPTION', 'android_app_url');
 define('IOS_APP_URL_OPTION', 'ios_app_url');
