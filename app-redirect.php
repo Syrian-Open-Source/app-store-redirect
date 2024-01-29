@@ -8,6 +8,7 @@
  * Author URI: https://github.com/somarkn99
  * Text Domain: app-redirect
  */
+if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
 define('ANDROID_APP_URL_OPTION', 'android_app_url');
 define('IOS_APP_URL_OPTION', 'ios_app_url');
@@ -74,42 +75,39 @@ function app_store_redirect_settings_page()
     $custom_route = get_option(CUSTOM_ROUTE_OPTION, '');
 ?>
     <div class="wrap">
-        <h2><?= __('App Redirect Settings', 'app-redirect') ?></h2>
+        <h2><?php echo __('App Redirect Settings', 'app-redirect'); ?></h2>
         <form method="post" action="">
             <?php wp_nonce_field('app_store_redirect_update', 'app_store_redirect_nonce'); ?>
-            <label for="android_app_url"><?= __('Google Play URL:', 'app-redirect') ?></label>
-            <input type="url" name="android_app_url" placeholder="<?= __('Your App link on Google Play', 'app-redirect') ?>" id="android_app_url" value="<?php echo esc_attr($android_app_url); ?>" size="60">
-            <br>
-            <br>
-            <label for="ios_app_url"><?= __('Apple Store URL:', 'app-redirect') ?></label>
-            <input type="url" name="ios_app_url" placeholder="<?= __('Your App link on Apple Store', 'app-redirect') ?>" id="ios_app_url" value="<?php echo esc_attr($ios_app_url); ?>" size="60">
-            <br>
-            <br>
-            <label for="custom_route"><?= __('Custom Route:', 'app-redirect') ?></label>
-            <input type="text" name="custom_route" placeholder="<?= __('Custom link that will redirect the user, for example: appStores', 'app-redirect') ?>" id="custom_route" value="<?php echo esc_attr($custom_route); ?>" size="60">
-            <br>
-            <br>
-            <input type="submit" name="app_store_redirect_submit" class="button button-primary" value="<?= __('Save') ?>">
+            <label for="android_app_url"><?php echo __('Google Play URL:', 'app-redirect'); ?></label>
+            <input type="url" name="android_app_url" placeholder="<?php echo __('Your App link on Google Play', 'app-redirect'); ?>" id="android_app_url" value="<?php echo esc_attr($android_app_url); ?>" size="60">
+            <br><br>
+            <label for="ios_app_url"><?php echo __('Apple Store URL:', 'app-redirect'); ?></label>
+            <input type="url" name="ios_app_url" placeholder="<?php echo __('Your App link on Apple Store', 'app-redirect'); ?>" id="ios_app_url" value="<?php echo esc_attr($ios_app_url); ?>" size="60">
+            <br><br>
+            <label for="custom_route"><?php echo __('Custom Route:', 'app-redirect'); ?></label>
+            <input type="text" name="custom_route" placeholder="<?php echo __('Custom link that will redirect the user, for example: appStores', 'app-redirect'); ?>" id="custom_route" value="<?php echo esc_attr($custom_route); ?>" size="60">
+            <br><br>
+            <input type="submit" name="app_store_redirect_submit" class="button button-primary" value="<?php echo __('Save'); ?>">
         </form>
     </div>
     <div class="wrap-preview-shortcode">
-        <h3><?= __('Available Shortcodes', 'app-redirect') ?></h3>
-        <span><?= __('(click to copy)', 'app-redirect') ?></span>
+        <h3><?php echo __('Available Shortcodes', 'app-redirect'); ?></h3>
+        <span><?php echo __('(click to copy)', 'app-redirect'); ?></span>
 
         <h4>[app-store-button buttons="ios"]</h4>
-        <?= do_shortcode('[app-store-button buttons="ios"]'); ?>
+        <?php echo do_shortcode('[app-store-button buttons="ios"]'); ?>
 
         <h4>[app-store-button buttons="android"]</h4>
-        <?= do_shortcode('[app-store-button buttons="android"]'); ?>
+        <?php echo do_shortcode('[app-store-button buttons="android"]'); ?>
 
         <h4>[app-store-button buttons="all"]</h4>
-        <?= do_shortcode('[app-store-button buttons="all"]'); ?>
+        <?php echo do_shortcode('[app-store-button buttons="all"]'); ?>
 
         <h4>[app-store-button buttons="auto"]</h4>
-        <?= do_shortcode('[app-store-button buttons="ios"]'); ?>
-        <span style="display: inline;"><?= __('or', 'app-redirect') ?></span>
-        <?= do_shortcode('[app-store-button buttons="android"]'); ?>
-        <span style="display: inline;"><?= __('According to the user operating system', 'app-redirect') ?></span>
+        <?php echo do_shortcode('[app-store-button buttons="ios"]'); ?>
+        <span style="display: inline;"><?php echo __('or', 'app-redirect'); ?></span>
+        <?php echo do_shortcode('[app-store-button buttons="android"]'); ?>
+        <span style="display: inline;"><?php echo __('According to the user operating system', 'app-redirect'); ?></span>
     </div>
 
     <style>
@@ -128,7 +126,7 @@ function app_store_redirect_settings_page()
                 textarea.select();
                 document.execCommand('copy');
                 document.body.removeChild(textarea);
-                alert("<?= __('Shortcode Copied !', 'app-redirect') ?>");
+                alert("<?php echo __('Shortcode Copied !', 'app-redirect'); ?>");
             });
         });
     </script>
