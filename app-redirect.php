@@ -28,8 +28,8 @@ add_action('init', 'app_store_redirect_load_textdomain');
 function app_store_redirect_admin_menu()
 {
     add_menu_page(
-        __('App Redirect Settings', 'app-redirect'),
-        __('App Redirect', 'app-redirect'),
+        esc_html__('App Redirect Settings', 'app-redirect'),
+        esc_html__('App Redirect', 'app-redirect'),
         'manage_options',
         'app-redirect-settings',
         'app_store_redirect_settings_page',
@@ -44,10 +44,10 @@ function app_store_redirect_settings_page()
     if (isset($_POST['app_store_redirect_submit'])) {
         // Security
         if (!current_user_can('manage_options')) {
-            wp_die(__('You do not have sufficient permissions to access this page.', 'app-redirect'));
+            wp_die(esc_html__('You do not have sufficient permissions to access this page.', 'app-redirect'));
         }
         if (!isset($_POST['app_store_redirect_nonce']) || !wp_verify_nonce($_POST['app_store_redirect_nonce'], 'app_store_redirect_update')) {
-            wp_die(__('Invalid nonce specified', 'app-redirect'), __('Error', 'app-redirect'), [
+            wp_die(esc_html__('Invalid nonce specified', 'app-redirect'), esc_html__('Error', 'app-redirect'), [
                 'response' => 403,
                 'back_link' => 'admin.php?page=' . $_GET['page'],
             ]);
@@ -60,7 +60,7 @@ function app_store_redirect_settings_page()
         // Check if the custom route is already in use
         $existing_pages = get_pages(['meta_key' => '_wp_page_template', 'meta_value' => 'page-templates/template-custom.php']);
         if (!empty($existing_pages)) {
-            echo '<div class="error"><p>' . __('Custom route is already in use. Please choose a different route.', 'app-redirect') . '</p></div>';
+            echo '<div class="error"><p>' . esc_html__('Custom route is already in use. Please choose a different route.', 'app-redirect') . '</p></div>';
             return;
         }
         update_option(CUSTOM_ROUTE_OPTION, esc_html($_POST['custom_route']));
@@ -68,31 +68,31 @@ function app_store_redirect_settings_page()
         // Flush old Cached rewrite rules without visiting Settings->Permalinks (effective on the next website load)
         flush_rewrite_rules();
 
-        echo '<div class="updated"><p>' . __('Settings saved', 'app-redirect') . '.</p></div>';
+        echo '<div class="updated"><p>' . esc_html__('Settings saved', 'app-redirect') . '.</p></div>';
     }
     $android_app_url = get_option(ANDROID_APP_URL_OPTION, '');
     $ios_app_url = get_option(IOS_APP_URL_OPTION, '');
     $custom_route = get_option(CUSTOM_ROUTE_OPTION, '');
 ?>
     <div class="wrap">
-        <h2><?php echo __('App Redirect Settings', 'app-redirect'); ?></h2>
+        <h2><?php esc_html_e('App Redirect Settings', 'app-redirect'); ?></h2>
         <form method="post" action="">
             <?php wp_nonce_field('app_store_redirect_update', 'app_store_redirect_nonce'); ?>
-            <label for="android_app_url"><?php echo __('Google Play URL:', 'app-redirect'); ?></label>
-            <input type="url" name="android_app_url" placeholder="<?php echo __('Your App link on Google Play', 'app-redirect'); ?>" id="android_app_url" value="<?php echo esc_attr($android_app_url); ?>" size="60">
+            <label for="android_app_url"><?php esc_html_e('Google Play URL:', 'app-redirect'); ?></label>
+            <input type="url" name="android_app_url" placeholder="<?php esc_attr_e('Your App link on Google Play', 'app-redirect'); ?>" id="android_app_url" value="<?php echo esc_attr($android_app_url); ?>" size="60">
             <br><br>
-            <label for="ios_app_url"><?php echo __('Apple Store URL:', 'app-redirect'); ?></label>
-            <input type="url" name="ios_app_url" placeholder="<?php echo __('Your App link on Apple Store', 'app-redirect'); ?>" id="ios_app_url" value="<?php echo esc_attr($ios_app_url); ?>" size="60">
+            <label for="ios_app_url"><?php esc_html_e('Apple Store URL:', 'app-redirect'); ?></label>
+            <input type="url" name="ios_app_url" placeholder="<?php esc_attr_e('Your App link on Apple Store', 'app-redirect'); ?>" id="ios_app_url" value="<?php echo esc_attr($ios_app_url); ?>" size="60">
             <br><br>
-            <label for="custom_route"><?php echo __('Custom Route:', 'app-redirect'); ?></label>
-            <input type="text" name="custom_route" placeholder="<?php echo __('Custom link that will redirect the user, for example: appStores', 'app-redirect'); ?>" id="custom_route" value="<?php echo esc_attr($custom_route); ?>" size="60">
+            <label for="custom_route"><?php esc_html_e('Custom Route:', 'app-redirect'); ?></label>
+            <input type="text" name="custom_route" placeholder="<?php esc_attr_e('Custom link that will redirect the user, for example: appStores', 'app-redirect'); ?>" id="custom_route" value="<?php echo esc_attr($custom_route); ?>" size="60">
             <br><br>
-            <input type="submit" name="app_store_redirect_submit" class="button button-primary" value="<?php echo __('Save'); ?>">
+            <input type="submit" name="app_store_redirect_submit" class="button button-primary" value="<?php esc_attr_e('Save', 'app-redirect'); ?>">
         </form>
     </div>
     <div class="wrap-preview-shortcode">
-        <h3><?php echo __('Available Shortcodes', 'app-redirect'); ?></h3>
-        <span><?php echo __('(click to copy)', 'app-redirect'); ?></span>
+        <h3><?php esc_html_e('Available Shortcodes', 'app-redirect'); ?></h3>
+        <span><?php esc_html_e('(click to copy)', 'app-redirect'); ?></span>
 
         <h4>[app-store-button buttons="ios"]</h4>
         <?php echo do_shortcode('[app-store-button buttons="ios"]'); ?>
@@ -105,9 +105,9 @@ function app_store_redirect_settings_page()
 
         <h4>[app-store-button buttons="auto"]</h4>
         <?php echo do_shortcode('[app-store-button buttons="ios"]'); ?>
-        <span style="display: inline;"><?php echo __('or', 'app-redirect'); ?></span>
+        <span style="display: inline;"><?php esc_html_e('or', 'app-redirect'); ?></span>
         <?php echo do_shortcode('[app-store-button buttons="android"]'); ?>
-        <span style="display: inline;"><?php echo __('According to the user operating system', 'app-redirect'); ?></span>
+        <span style="display: inline;"><?php esc_html_e('According to the user operating system', 'app-redirect'); ?></span>
     </div>
 
     <style>
@@ -126,7 +126,7 @@ function app_store_redirect_settings_page()
                 textarea.select();
                 document.execCommand('copy');
                 document.body.removeChild(textarea);
-                alert("<?php echo __('Shortcode Copied !', 'app-redirect'); ?>");
+                alert("<?php echo esc_js(esc_html__('Shortcode Copied !', 'app-redirect')); ?>");
             });
         });
     </script>
@@ -224,16 +224,15 @@ add_filter('query_vars', 'app_store_redirect_query_vars');
 function app_store_redirect_template_redirect()
 {
     if (get_query_var('app_store_redirect')) {
-
         $user_os = app_store_redirect_get_user_os();
-        $android_app_url = get_option(ANDROID_APP_URL_OPTION, '');
-        $ios_app_url = get_option(IOS_APP_URL_OPTION, '');
+        $android_app_url = esc_url(get_option(ANDROID_APP_URL_OPTION, ''));
+        $ios_app_url = esc_url(get_option(IOS_APP_URL_OPTION, ''));
 
         if ($user_os == 'android' && !empty($android_app_url)) {
-            wp_redirect("Location: $android_app_url");
+            wp_redirect($android_app_url);
             exit;
         } elseif ($user_os == 'ios' && !empty($ios_app_url)) {
-            wp_redirect("Location: $ios_app_url");
+            wp_redirect($ios_app_url);
             exit;
         } else {
             wp_safe_redirect(home_url());
@@ -242,7 +241,6 @@ function app_store_redirect_template_redirect()
     }
 }
 add_action('template_redirect', 'app_store_redirect_template_redirect');
-
 
 function app_store_redirect_get_user_os()
 {
