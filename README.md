@@ -1,13 +1,13 @@
 # App Redirect
 
-**Contributors:** somarkn99, abdoomayhob, king-a-s
-**Tags:** app, store, redirect, ios, android
-**Requires at least:** 5.0
-**Tested up to:** 6.4.3
-**Requires PHP:** 7.0
-**Stable tag:** 1.2
-**License:** GPLv2 or later
-**License URI:** [https://www.gnu.org/licenses/gpl-2.0.html](https://www.gnu.org/licenses/gpl-2.0.html)
+**Contributors:** somarkn99, abdoomayhob, king-a-s  
+**Tags:** app, store, redirect, ios, android  
+**Requires at least:** 5.0  
+**Tested up to:** 6.4.3  
+**Requires PHP:** 7.0  
+**Stable tag:** 1.2  
+**License:** GPLv2 or later  
+**License URI:** [https://www.gnu.org/licenses/gpl-2.0.html](https://www.gnu.org/licenses/gpl-2.0.html)  
 
 ## Description
 
