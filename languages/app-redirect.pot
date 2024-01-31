@@ -1,0 +1,123 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: App Redirect\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-31 13:16+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.6; wp-6.4.2\n"
+"X-Domain: app-redirect"
+
+#: app-redirect.php:97
+msgid "(click to copy)"
+msgstr ""
+
+#: app-redirect.php:112
+msgid "According to the user operating system"
+msgstr ""
+
+#. Name of the plugin
+#: app-redirect.php:38
+msgid "App Redirect"
+msgstr ""
+
+#: app-redirect.php:37 app-redirect.php:80
+msgid "App Redirect Settings"
+msgstr ""
+
+#: app-redirect.php:175
+msgid "App Store"
+msgstr ""
+
+#: app-redirect.php:86
+msgid "Apple Store URL:"
+msgstr ""
+
+#: app-redirect.php:96
+msgid "Available Shortcodes"
+msgstr ""
+
+#: app-redirect.php:90
+msgid "Custom link that will redirect the user, for example: appStores"
+msgstr ""
+
+#: app-redirect.php:89
+msgid "Custom Route:"
+msgstr ""
+
+#: app-redirect.php:176
+msgid "Download on the"
+msgstr ""
+
+#: app-redirect.php:58
+msgid "Error"
+msgstr ""
+
+#: app-redirect.php:182
+msgid "Get it on"
+msgstr ""
+
+#: app-redirect.php:181
+msgid "Google Play"
+msgstr ""
+
+#: app-redirect.php:83
+msgid "Google Play URL:"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://github.com/Syrian-Open-Source"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://github.com/Syrian-Open-Source/app-store-redirect"
+msgstr ""
+
+#: app-redirect.php:58
+msgid "Invalid nonce specified"
+msgstr ""
+
+#: app-redirect.php:110
+msgid "or"
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"Redirects users to the appropriate app store based on their operating system."
+msgstr ""
+
+#: app-redirect.php:92
+msgid "Save"
+msgstr ""
+
+#: app-redirect.php:72
+msgid "Settings saved"
+msgstr ""
+
+#: app-redirect.php:131
+msgid "Shortcode Copied !"
+msgstr ""
+
+#. Author of the plugin
+msgid "Syrian Open Source"
+msgstr ""
+
+#: app-redirect.php:55
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: app-redirect.php:87
+msgid "Your App link on Apple Store"
+msgstr ""
+
+#: app-redirect.php:84
+msgid "Your App link on Google Play"
+msgstr ""
