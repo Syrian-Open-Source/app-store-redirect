@@ -1,13 +1,13 @@
 # App Redirect
 
-**Contributors:** Somar Kesen, Abdoo Mayhob
-**Tags:** app, store, redirect  
+**Contributors:** somarkn99, abdoomayhob, king-a-s  
+**Tags:** app, store, redirect, ios, android  
 **Requires at least:** 5.0  
-**Tested up to:** 5.8  
+**Tested up to:** 6.4.3  
 **Requires PHP:** 7.0  
-**Stable tag:** 1.0  
+**Stable tag:** 1.2  
 **License:** GPLv2 or later  
-**License URI:** [https://www.gnu.org/licenses/gpl-2.0.html](https://www.gnu.org/licenses/gpl-2.0.html)
+**License URI:** [https://www.gnu.org/licenses/gpl-2.0.html](https://www.gnu.org/licenses/gpl-2.0.html)  
 
 ## Description
 
@@ -15,7 +15,7 @@ App Redirect is a WordPress plugin that redirects users to the appropriate app s
 
 ## Installation
 
-1. Upload the `app-store-redirect` folder to the `/wp-content/plugins/` directory.
+1. Upload the `app-redirect` folder to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. Configure the plugin by navigating to 'App Redirect' in the WordPress dashboard and setting the Android and iOS app URLs.
 
@@ -23,7 +23,7 @@ App Redirect is a WordPress plugin that redirects users to the appropriate app s
 
 ### 1.2
 
-- Shortcode for app store button
+- Shortcode for app redirect button
 
 ### 1.1
 
@@ -46,6 +46,7 @@ App Redirect is a WordPress plugin that redirects users to the appropriate app s
 
 - [Somar Kesen](https://github.com/somarkn99)
 - [Abdoo Mayhob](https://abdoo.me)
+- [Adnan Al-Malek](https://github.com/king-a-s)
 
 # About Syrian Open Source
 
